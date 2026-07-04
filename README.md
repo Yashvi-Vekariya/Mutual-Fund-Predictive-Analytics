@@ -34,6 +34,12 @@ Three experiments were run across different investment horizons and hyperparamet
 | `5yr_deep_n200` | 5 years | 200 | 10 | **98.0%** | 97.0% |
 | `10yr_shallow_n150` | 10 years | 150 | 5 | **96.7%** | 96.0% |
 
+<img width="1826" height="872" alt="Screenshot 2026-07-04 105125" src="https://github.com/user-attachments/assets/f664b8d5-f13a-4566-9a37-78df79a7b0d5" />
+<img width="1912" height="362" alt="Screenshot 2026-07-04 105053" src="https://github.com/user-attachments/assets/60f8ac9d-c823-44c4-8d01-e28b35118972" />
+<img width="1826" height="876" alt="Screenshot 2026-07-04 104909" src="https://github.com/user-attachments/assets/482c20cb-675e-4537-838b-08919be01d83" />
+<img width="1860" height="870" alt="Screenshot 2026-07-04 104942" src="https://github.com/user-attachments/assets/02c977ad-c28e-4b9e-b120-29cb9eb0b86c" />
+
+
 ### How to reproduce
 
 ```bash
