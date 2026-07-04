@@ -118,6 +118,8 @@ I considered multiple visualization approaches to thoroughly analyze the dataset
 
 ---
 
+Future Scope :- https://predictive-fund-suite.lovable.app/
+
 ## 👤 Author
 
 **Yashvi Vekariya**
