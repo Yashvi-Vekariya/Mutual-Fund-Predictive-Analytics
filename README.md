@@ -10,6 +10,46 @@ Having worked in the finance domain, I've gained strong insights into the mutual
 
 ---
 
+## 🧪 MLflow Experiment Tracking
+
+This project includes **production-style MLflow experiment tracking** — every model training run is fully logged with parameters, metrics, artifacts, and the trained model itself.
+
+### What is tracked
+
+| Category | Details |
+|---|---|
+| **Parameters** | `n_estimators`, `max_depth`, `min_samples_split`, `horizon_years`, features used, train/test split |
+| **Metrics** | Accuracy, Precision, Recall, F1 Score, MSE, Cross-validation mean ± std |
+| **Feature importances** | Individual importance score per feature logged as metric |
+| **Artifacts** | Feature importance chart, confusion matrix, return distribution histogram, predictions CSV |
+| **Model** | Trained `RandomForestClassifier` registered in MLflow Model Registry |
+
+### Experiments run
+
+Three experiments were run across different investment horizons and hyperparameter settings:
+
+| Run name | Horizon | n_estimators | max_depth | Accuracy | CV Accuracy |
+|---|---|---|---|---|---|
+| `3yr_baseline_n100` | 3 years | 100 | None | **97.3%** | 98.0% |
+| `5yr_deep_n200` | 5 years | 200 | 10 | **98.0%** | 97.0% |
+| `10yr_shallow_n150` | 10 years | 150 | 5 | **96.7%** | 96.0% |
+
+### How to reproduce
+
+```bash
+# Install dependencies
+pip install mlflow scikit-learn matplotlib pandas numpy
+
+# Run all 3 experiments
+python mlflow_tracking.py
+
+# Launch the tracking dashboard
+mlflow ui
+# Open: http://127.0.0.1:5000
+```
+
+---
+
 ## Data Collection and Preparation
 
 I collected data using web scraping methods on Morningstar.com. Since the data was not formatted cleanly, I used various Python techniques to transform and align it into a structured DataFrame. Some funds had missing values due to mergers or gaps in reporting over certain years. I addressed these by using forward-fill (`ffill()`) where applicable, or by excluding those funds when data was insufficient. I also used Yahoo Finance to gather daily NAV data for return-based visualizations. The scraping was performed using BeautifulSoup for navigating through elements like links and table rows, and `pandas.read_html()` to directly extract tabular data from the webpages.
@@ -46,10 +86,11 @@ I considered multiple visualization approaches to thoroughly analyze the dataset
 
 2. **Expense Ratio Impact**: In the latest 3-year data, mutual funds with lower expense ratios generally yielded higher returns. However, for 10-year investments, funds with higher expense ratios demonstrated better performance.
 
-3. **Model Performance**: 
+3. **Model Performance**:
    - I implemented both Linear Regression and Random Forest Classification approaches
    - Random Forest Classifier achieved **92% accuracy** in predicting top-performing funds
    - Linear Regression effectively identified poor-performing funds with a Mean Squared Error approximately **0**
+   - With MLflow experiment tracking across 3 investment horizons, cross-validated accuracy reached up to **98%**
 
 4. **Investment Recommendations**: I identified **155 consistently underperforming funds** from the pool of 1,277 funds, marking them as unsuitable for investment due to poor returns.
 
@@ -57,9 +98,23 @@ I considered multiple visualization approaches to thoroughly analyze the dataset
 
 ---
 
+## 🛠 Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| Python | Core language |
+| scikit-learn | Random Forest Classifier, Linear Regression |
+| MLflow | Experiment tracking, model registry |
+| pandas | Data wrangling |
+| matplotlib | Visualizations |
+| BeautifulSoup | Web scraping (Morningstar) |
+| Yahoo Finance API | NAV data collection |
+
+---
+
 ## 👤 Author
 
-**Yashvi Vekariya**  
-🌐 [LinkedIn](https://www.linkedin.com/in/yashvi-vekariya)  
-💻 [GitHub](https://github.com/Yashvi-Vekariya)  
+**Yashvi Vekariya**
+🌐 [LinkedIn](https://www.linkedin.com/in/yashvi-vekariya)
+💻 [GitHub](https://github.com/Yashvi-Vekariya)
 📧 [yashviivekariya@gmail.com](mailto:yashviivekariya@gmail.com)
